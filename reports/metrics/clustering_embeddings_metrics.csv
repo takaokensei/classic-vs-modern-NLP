@@ -1,0 +1,3 @@
+,Silhouette Score,Davies-Bouldin Index,Número de Clusters,Pontos de Ruído
+K-Means,0.09221679717302322,2.859116767544504,6.0,
+DBSCAN,0.7862576842308044,0.30421581680793386,4.0,5583.0

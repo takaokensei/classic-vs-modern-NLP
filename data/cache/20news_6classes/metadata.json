@@ -1,0 +1,21 @@
+{
+  "dataset": "20news_6classes",
+  "n_texts": 5611,
+  "n_classes": 6,
+  "target_names": [
+    "rec.autos",
+    "rec.sport.baseball",
+    "rec.sport.hockey",
+    "sci.space",
+    "talk.politics.guns",
+    "talk.politics.mideast"
+  ],
+  "classes": {
+    "0": "rec.autos",
+    "1": "rec.sport.baseball",
+    "2": "rec.sport.hockey",
+    "3": "sci.space",
+    "4": "talk.politics.guns",
+    "5": "talk.politics.mideast"
+  }
+}

@@ -1,0 +1,51 @@
+# ============================================================================
+# Dependências Core - Processamento de Dados e Machine Learning
+# ============================================================================
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+scipy>=1.3.1  # Requerido por scikit-learn e outras bibliotecas
+pyarrow>=22.0.0 --only-binary=:all:  # Evita build local (corrige erro no Windows/Python 3.14+)
+
+# ============================================================================
+# Visualização
+# ============================================================================
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.18.0  # Gráficos interativos (usado no Streamlit)
+kaleido>=0.2.1  # Renderizador para exportar gráficos Plotly (PNG, SVG, PDF)
+
+# ============================================================================
+# Embeddings e APIs
+# ============================================================================
+google-generativeai>=0.3.0  # Google Gemini API (para embeddings via API - opcional)
+sentence-transformers>=2.2.0  # Alternativa local para embeddings - recomendado
+python-dotenv>=1.0.0  # Gerenciamento de variáveis de ambiente
+groq>=0.4.0  # Groq API (recomendado - rápido e gratuito)
+openai>=1.0.0  # OpenAI API (opcional)
+
+# ============================================================================
+# Redução Dimensional para Visualização
+# ============================================================================
+# Nota: umap-learn requer numba, que pode ter problemas com Python 3.14+
+# O código está preparado para usar t-SNE automaticamente como fallback
+# Para Python 3.14+: se quiser UMAP, instale primeiro: pip install numba==0.63.0b1
+# Depois: pip install umap-learn
+# Para outras versões (3.8-3.13): instale normalmente: pip install -r requirements.txt
+umap-learn>=0.5.3; python_version < "3.14"
+
+# ============================================================================
+# Jupyter e Desenvolvimento
+# ============================================================================
+jupyter>=1.0.0
+ipykernel>=6.25.0
+
+# ============================================================================
+# Utilitários
+# ============================================================================
+tqdm>=4.65.0  # Barra de progresso (usado em embeddings e outros processos)
+
+# ============================================================================
+# Streamlit - Aplicação Web Interativa
+# ============================================================================
+streamlit>=1.28.0  # Framework para aplicações web interativas
