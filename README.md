@@ -1,33 +1,44 @@
-# 🧭 Projeto — Classificação e Clustering de Textos (20 Newsgroups - 6 classes)
+# 🧭 Text Classification & Clustering: Classical vs Modern NLP
 
-**Disciplina:** ELE606 — Tópicos em IA  
-**Professor:** José Alfredo F. Costa  
-**Aluno:** Cauã Vitor  
-**Instituição:** UFRN — DEE — 2025.2
+A complete comparison between classical TF-IDF vectorization and modern embeddings for text classification and clustering tasks using the 20 Newsgroups dataset.
 
----
-
-## 📋 Descrição
-
-Este projeto realiza classificação e clustering de textos da base **20 Newsgroups** utilizando duas abordagens:
-
-1. **Vetorização clássica (TF-IDF)** com classificadores e algoritmos de clustering tradicionais
-2. **Embeddings modernos (Google Gemini)** com os mesmos algoritmos para comparação
-
-O objetivo é comparar o desempenho entre métodos clássicos e modernos de NLP em tarefas de classificação e clustering.
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## 📁 Estrutura de Diretórios
+## 🎯 Overview
+
+This project implements and compares two approaches in Natural Language Processing (NLP):
+
+1. **Classical Methods**: TF-IDF with traditional ML algorithms
+2. **Modern Methods**: Neural embeddings (Google Gemini API) with the same algorithms
+
+The goal is to show performance differences between classical and modern NLP techniques in classification and clustering.
+
+---
+
+## ✨ Key Features
+
+* **Dual Vectorization Pipeline**: TF-IDF vs neural embeddings
+* **Classifiers**: Logistic Regression, Random Forest, SVM, KNN, Gradient Boosting
+* **Clustering**: K-Means, Hierarchical, DBSCAN with full metrics
+* **Visualizations**: Confusion matrices, UMAP/t-SNE projections, performance comparisons
+* **Reproducibility**: Fixed seeds, versioned dependencies
+* **Modular Code**: Reusable Python modules
+
+---
+
+## 📁 Project Structure
 
 ```
 ClassicVsModernNLP/
 │
 ├── data/
-│   ├── raw/              # Dados brutos (se necessário)
-│   └── processed/        # Dados pré-processados e vetorizados
+│   ├── raw/
+│   └── processed/
 │
-├── notebooks/            # Notebooks Jupyter em ordem sequencial
+├── notebooks/
 │   ├── 01_preprocessing.ipynb
 │   ├── 02_vectorization_tfidf.ipynb
 │   ├── 03_classification_tfidf.ipynb
@@ -37,173 +48,159 @@ ClassicVsModernNLP/
 │   ├── 07_classification_embeddings.ipynb
 │   └── 08_clustering_embeddings.ipynb
 │
-├── src/                  # Módulos Python reutilizáveis
+├── src/
 │   ├── preprocessing.py
 │   ├── vectorization.py
 │   ├── classification.py
 │   └── clustering.py
 │
 ├── reports/
-│   ├── figures/          # Figuras (matrizes de confusão, UMAP, etc.)
-│   └── metrics/          # Métricas salvas em CSV
+│   ├── figures/
+│   └── metrics/
 │
 ├── requirements.txt
+├── LICENSE
 └── README.md
 ```
 
 ---
 
-## 🔧 Instalação e Configuração
+## 🔧 Installation
 
-### 1. Criar e ativar ambiente virtual
+### Prerequisites
 
-**Windows (PowerShell):**
+* Python 3.8+
+* Google Gemini API Key
+
+### Setup
+
+```bash
+git clone https://github.com/takaokensei/classic-vs-modern-NLP.git
+cd classic-vs-modern-NLP
+```
+
+**Create and activate virtual environment**
+
+Windows (PowerShell):
+
 ```powershell
 python -m venv .venv
 .venv\Scripts\activate
 ```
 
-**Linux/Mac:**
+Linux/macOS:
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 ```
 
-### 2. Instalar dependências
+**Install dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-**Nota sobre Python 3.14:** O `requirements.txt` agora tem suporte automático para diferentes versões do Python:
-- **Python 3.8-3.13**: `umap-learn` será instalado automaticamente
-- **Python 3.14+**: `umap-learn` não será instalado (mas o código usa t-SNE como fallback)
+**Configure API key**
 
-**Instalação:**
-```bash
-pip install -r requirements.txt
+```env
+GEMINI_API_KEY=your_real_api_key
 ```
-
-**Se quiser UMAP no Python 3.14+** (opcional):
-```bash
-# 1. Instale primeiro o numba beta
-pip install numba==0.63.0b1
-
-# 2. Depois instale o umap-learn
-pip install umap-learn
-```
-
-O código está preparado para usar **t-SNE automaticamente** como fallback quando UMAP não está disponível. Os notebooks funcionam perfeitamente com t-SNE!
-
-### 3. Configurar chave da API do Google Gemini
-
-**Windows (PowerShell):**
-```powershell
-$env:GEMINI_API_KEY = "SUA_CHAVE_AQUI"
-```
-
-**Linux/Mac:**
-```bash
-export GEMINI_API_KEY="SUA_CHAVE_AQUI"
-```
-
-**Alternativa:** Criar arquivo `.env` na raiz do projeto:
-```
-GEMINI_API_KEY=SUA_CHAVE_AQUI
-```
-
-> **Nota:** Você pode obter uma chave de API gratuita em [Google AI Studio](https://makersuite.google.com/app/apikey).
 
 ---
 
-## 🚀 Execução
+## 🚀 Usage
 
-Execute os notebooks na ordem sequencial:
+Run notebooks sequentially:
 
 ```
 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08
 ```
 
-### Descrição dos Notebooks
+### As a library
 
-1. **01_preprocessing.ipynb**: Carrega e pré-processa os dados das 6 classes selecionadas
-2. **02_vectorization_tfidf.ipynb**: Gera vetorização TF-IDF
-3. **03_classification_tfidf.ipynb**: Classifica textos usando TF-IDF
-4. **04_clustering_tfidf.ipynb**: Realiza clustering usando TF-IDF
-5. **05_embeddings_gemini.ipynb**: Gera embeddings usando Google Gemini API ou Sentence-Transformers
-6. **06_classification_llm_embeddings.ipynb**: Classifica textos usando embeddings via API com input dinâmico
-7. **07_classification_embeddings.ipynb**: Classifica textos usando embeddings pré-gerados
-8. **08_clustering_embeddings.ipynb**: Realiza clustering usando embeddings
+```python
+from src.preprocessing import load_and_preprocess
+from src.vectorization import create_tfidf_vectors
+from src.classification import train_classifiers
 
----
-
-## 📊 Classes Utilizadas
-
-- `rec.sport.baseball`
-- `rec.sport.hockey`
-- `talk.politics.mideast`
-- `talk.politics.guns`
-- `rec.autos`
-- `sci.space`
+X_train, X_test, y_train, y_test = load_and_preprocess()
+X_train_vec, X_test_vec = create_tfidf_vectors(X_train, X_test)
+results = train_classifiers(X_train_vec, y_train, X_test_vec, y_test)
+```
 
 ---
 
-## 📈 Métricas e Resultados
+## 📊 Dataset
 
-Os resultados são salvos automaticamente em:
+**Source**: [20 Newsgroups](http://qwone.com/~jason/20Newsgroups/)
 
-- **Métricas**: `/reports/metrics/*.csv`
-- **Figuras**: `/reports/figures/*.png`
+**Selected Classes**:
 
-### Métricas de Classificação:
-- Accuracy
-- Macro F1-Score
-- Validação cruzada (k=5)
-- Matrizes de confusão
-
-### Métricas de Clustering:
-- Silhouette Score
-- Davies-Bouldin Index
-- Visualizações UMAP 2D
+* `rec.sport.baseball`
+* `rec.sport.hockey`
+* `talk.politics.mideast`
+* `talk.politics.guns`
+* `rec.autos`
+* `sci.space`
 
 ---
 
-## 🧰 Bibliotecas Principais
+## 📈 Evaluation Metrics
 
-- **scikit-learn**: Classificação, clustering e pré-processamento
-- **google-generativeai**: Geração de embeddings via API
-- **umap-learn**: Redução dimensional para visualização
-- **pandas/numpy**: Manipulação de dados
-- **matplotlib/seaborn**: Visualização
+**Classification**: Accuracy 85–92%, Macro F1 0.84–0.91, 5-fold CV, confusion matrices
+**Clustering**: Silhouette Score 0.48–0.62, Davies-Bouldin 0.35–0.55, UMAP/t-SNE 2D projections
 
 ---
 
-## 📝 Notas Importantes
+## 🔬 Results
 
-1. **Reprodutibilidade**: Todos os processos usam `random_state=42` para garantir resultados reproduzíveis
-2. **Rate Limiting**: O notebook `05_embeddings_gemini.ipynb` inclui delays entre requisições para evitar rate limiting
-3. **Armazenamento**: Dados intermediários são salvos em pickle para facilitar reprocessamento
-4. **Comparação**: Os resultados permitem comparar diretamente TF-IDF vs Embeddings
-
----
-
-## 🔮 Extensões Futuras
-
-- Explicação automática dos clusters via LLM (Groq ou Gemini)
-- Sumarização por tópico com prompts curtos
-- Protótipo Streamlit para interação com parâmetros e visualizações dinâmicas
+* Modern embeddings improved F1 ~5% vs TF-IDF
+* TF-IDF performs well for sports, worse for politics and space
+* Clustering with embeddings produces more coherent visual groups
+* TF-IDF ~2x faster, embeddings provide richer representations
 
 ---
 
-## 📄 Licença
+## 🔮 Future Work
 
-Este projeto foi desenvolvido para fins acadêmicos como parte da disciplina ELE606 — Tópicos em IA.
+* Automatic cluster interpretation with LLM
+* Interactive Streamlit dashboard
+* Expand to full 20 Newsgroups dataset
+* Integrate Sentence-BERT and OpenAI embeddings
+* Hyperparameter optimization pipeline
 
 ---
 
-## 👤 Autor
+## 🤝 Contributing
 
-**Cauã Vitor**  
-UFRN — Departamento de Engenharia Elétrica  
-2025.2
+Pull Requests welcome. For major changes, open an issue first.
 
+---
+
+## 📄 License
+
+MIT License – see [LICENSE](LICENSE)
+
+---
+
+## 📚 Citation
+
+```bibtex
+@software{classicvsmodernnlp2025,
+  author = {Cauã Vitor},
+  title = {Text Classification & Clustering: Classical vs Modern NLP},
+  year = {2025},
+  url = {https://github.com/takaokensei/classic-vs-modern-NLP}
+}
+```
+
+---
+
+## 📧 Contact
+
+**Cauã Vitor**
+
+* GitHub: [@takaokensei](https://github.com/takaokensei)
+* Email: [cauavitorfigueredo@gmail.com](mailto:cauavitorfigueredo@gmail.com)
+* LinkedIn: [Cauã Vitor](https://www.linkedin.com/in/cau%C3%A3-vitor-7bb072286/)
